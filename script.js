@@ -28,6 +28,12 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-computerSelection = getComputerChoice();
-playerSelection = "paper";
-console.log(playRound(playerSelection, computerSelection));
+function playGame() {
+  for (let i = 0; i < 5; i++) {
+    let playersChoice = prompt("Enter your choice: ");
+    let computersChoice = getComputerChoice();
+    console.log(playRound(playersChoice, computersChoice));
+  }
+}
+
+playGame();
