@@ -1,0 +1,185 @@
+:root {
+  --dark: #222;
+  --light: #eee;
+  --accent: #f09d09;
+  --tint: #603f04;
+  --shade: #f9d89d;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--dark);
+  color: var(--light);
+  font-size: 2rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  gap: 3rem;
+
+  padding: 3rem;
+}
+
+body,
+.btns,
+.choices,
+.field {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+body,
+.btns,
+.field {
+  flex-direction: column;
+}
+
+h1 {
+  color: var(--accent);
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+  text-align: center;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-decoration: underline;
+
+  margin-bottom: 1rem;
+}
+
+.field {
+  background-color: var(--tint);
+  width: 30rem;
+  height: 20rem;
+
+  border-radius: 4px;
+  border: 2px solid var(--accent);
+  padding: 3rem;
+
+  justify-content: space-between;
+}
+
+.score {
+  width: 100%;
+  align-self: flex-end;
+
+  display: flex;
+  justify-content: space-around;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+}
+
+.btns,
+.choices {
+  gap: 2rem;
+}
+
+.choice,
+.start {
+  padding: 0.5rem 1rem;
+  border: unset;
+  border-radius: 4px;
+  border: 1px solid var(--accent);
+  box-shadow: 4px 3px 0 var(--accent);
+  background-color: var(--shade);
+  color: var(--dark);
+  font-size: inherit;
+  font-weight: 900;
+  margin-right: 1rem;
+
+  transition: all 200ms;
+}
+
+.choice {
+  padding: 3rem;
+  background-color: var(--shade);
+
+  width: 8rem;
+  height: 8rem;
+  background-size: cover;
+}
+
+.choice[title="rock"] {
+  background-image: url(./imgs/hand-rock-svgrepo-com.svg);
+}
+
+.choice[title="paper"] {
+  background-image: url(./imgs/hand-paper-svgrepo-com.svg);
+}
+
+.choice[title="scissors"] {
+  background-image: url(./imgs/hand-scissors-svgrepo-com.svg);
+}
+
+.choice:hover {
+  cursor: pointer;
+  background-color: var(--accent);
+  box-shadow: 4px 3px 0 var(--tint);
+}
+
+.start:hover {
+  cursor: pointer;
+  background-color: var(--light);
+}
+
+.choice:active,
+.start:active {
+  transform: translate(5px, 4px);
+  box-shadow: none;
+}
+
+.hidden {
+  height: 0.25rem;
+  opacity: 0;
+  transition: 300ms ease;
+  flex-basis: 0;
+}
+
+@keyframes move {
+  from {
+    transform: rotate(-15deg);
+  }
+  to {
+    transform: rotate(15deg);
+  }
+}
+
+.finish {
+  background-color: var(--accent);
+  color: var(--dark);
+  border: 3px solid var(--shade);
+  font-size: 2rem;
+  animation: move 500ms ease-in-out infinite alternate;
+  margin-bottom: 3rem;
+  padding: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .field {
+    width: 40rem;
+    height: 30rem;
+    font-size: 2.4rem;
+    justify-content: space-around;
+  }
+
+  .finish {
+    font-size: 3rem;
+}
