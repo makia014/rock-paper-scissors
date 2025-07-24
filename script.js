@@ -21,7 +21,15 @@ const btns = document.querySelector(".btns");
 const choice = document.querySelectorAll(".choice");
 const choices = document.querySelector(".choices");
 const playerScore = document.querySelector(".you");
+const playerSVG = document.querySelector("#playerSVG");
 const computerScore = document.querySelector(".computer");
+const computerSVG = document.querySelector("#computerSVG");
+
+playerSVG.src = "imgs/hand-paper-svgrepo-com.svg";
+playerSVG.classList.add("round-choice");
+computerSVG.src = "imgs/hand-paper-svgrepo-com.svg";
+computerSVG.classList.add("round-choice");
+
 const winner = document.createElement("h3");
 document.body.insertBefore(winner, start);
 

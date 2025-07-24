@@ -119,6 +119,17 @@ h2 {
   background-size: cover;
 }
 
+.round-choice {
+  margin-left: 1.5rem;
+  border-radius: 50%;
+  vertical-align: middle;
+  background-color: var(--light);
+  width: 3rem;
+  height: 3rem;
+  background-size: cover;
+
+}
+
 .choice[title="rock"] {
   background-image: url(./imgs/hand-rock-svgrepo-com.svg);
 }
@@ -183,6 +194,11 @@ h2 {
     height: 50rem;
     font-size: 2.4rem;
     justify-content: space-around;
+  }
+
+  .round-choice {
+    width: 6rem;
+    height: 6rem;
   }
 
   .finish {
