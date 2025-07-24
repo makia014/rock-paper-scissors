@@ -25,11 +25,6 @@ const playerSVG = document.querySelector("#playerSVG");
 const computerScore = document.querySelector(".computer");
 const computerSVG = document.querySelector("#computerSVG");
 
-playerSVG.src = "imgs/hand-paper-svgrepo-com.svg";
-playerSVG.classList.add("round-choice");
-computerSVG.src = "imgs/hand-paper-svgrepo-com.svg";
-computerSVG.classList.add("round-choice");
-
 const winner = document.createElement("h3");
 document.body.insertBefore(winner, start);
 
@@ -37,12 +32,20 @@ const addToScreen = (el, string) => {
   el.textContent = string;
 };
 
+const addRoundChoice = (svg, selection) => {
+  svg.src = `imgs/hand-${selection}-svgrepo-com.svg`
+  svg.classList.add("round-choice");
+}
+
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     addToScreen(
       stats,
       `This round is a tie! You both drew ${playerSelection}.`
     );
+    addRoundChoice(playerSVG, playerSelection);
+    addRoundChoice(computerSVG, playerSelection);
+    
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "scissors" && computerSelection === "paper") ||
@@ -52,6 +55,9 @@ function playRound(playerSelection, computerSelection) {
       stats,
       `Computer chose ${computerSelection}, but you chose ${playerSelection}. You win this round!`
     );
+    addRoundChoice(playerSVG, playerSelection);
+    addRoundChoice(computerSVG, computerSelection);
+    
     playerPoints++;
   } else if (
     (computerSelection === "rock" && playerSelection === "scissors") ||
@@ -62,6 +68,9 @@ function playRound(playerSelection, computerSelection) {
       stats,
       `Computer wins this round as it chose ${computerSelection}, which beats your ${playerSelection}.`
     );
+    addRoundChoice(playerSVG, playerSelection);
+    addRoundChoice(computerSVG, computerSelection);
+    
     computerPoints++;
   }
 }
@@ -88,6 +97,10 @@ function toggleField() {
   playerPoints = 0;
   addToScreen(computerScore, computerPoints);
   addToScreen(playerScore, playerPoints);
+  computerSVG.classList.remove("round-choice");
+  computerSVG.src = "";
+  playerSVG.classList.remove("round-choice");
+  playerSVG.src = "";
 }
 
 start.addEventListener("click", (e) => {
